@@ -1,0 +1,11 @@
+
+  .footer {
+    color: black;
+    font-weight: normal;
+    font-size: 22px;
+    text-align: center;
+    display: grid;
+  }
+  .rwd-line {
+    display: inline;
+  } 

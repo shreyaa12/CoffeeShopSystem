@@ -1,13 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { fetchCoffeeList, loadCoffeeItems } from 'src/app/action/app.actoin';
 import { AppStateFacadeService } from 'src/app/app-state-facade.service';
 import { Coffee } from 'src/app/Model/coffee.model';
-import { DashboardState,dashboardFeatureKey } from 'src/app/reducers';
-import { coffees } from 'src/app/selectors/app.selectors';
-import { CoffeeProductListService } from 'src/app/Service/coffee-product-list.service';
-import { AppState } from 'src/app/Store';
+
+//imports before @NgRx Selectors
+// import { Store } from '@ngrx/store';
+// import { DashboardState,dashboardFeatureKey } from 'src/app/reducers';
+// import { coffees } from 'src/app/selectors/app.selectors';
+// import { CoffeeProductListService } from 'src/app/Service/coffee-product-list.service';
+// import { AppState } from 'src/app/Store';
+// import { fetchCoffeeList, loadCoffeeItems } from 'src/app/action/app.actoin';
 
 @Component({
   selector: 'app-product-list',
@@ -30,7 +32,7 @@ export class ProductListComponent implements OnInit,OnDestroy {
   
 
   ngOnInit(): void {
-    //Before using NgRx Selectors
+    //Before using @NgRx Selectors
     // this.retrieveCoffeeList();
     
     //After using NgRx Selectors

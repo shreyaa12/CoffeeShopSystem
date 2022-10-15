@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Coffee } from 'src/app/Model/coffee.model';
 import { Router,ActivatedRoute } from '@angular/router';
 import { CoffeeProductListService } from 'src/app/Service/coffee-product-list.service';
@@ -6,7 +6,8 @@ import { CoffeeProductListService } from 'src/app/Service/coffee-product-list.se
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  styleUrls: ['./product-details.component.css'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailsComponent implements OnInit {
 

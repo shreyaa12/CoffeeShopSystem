@@ -3,13 +3,27 @@
   <div class="list row">
     <div class="col-md-8">
       <h4>Coffee List</h4>
-      <span class="liSpan">Blend Name</span> 
-      <ul class="list-group">
+      <!-- <ul class="list-group">
         <li class="list-group-item" *ngFor="let coffee of coffees | paginate : {itemsPerPage: count,currentPage: page} let i = index"  [class.active]="i == currentIndex"
         (click)="setActiveCoffee(coffee, i)">
           {{ coffee.blend_name }}
         </li>
-      </ul>
+      </ul> -->
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Blend Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let coffee of coffees | paginate : {itemsPerPage: count,currentPage: page} let i = index"  [class.active]="i == currentIndex">
+          <td (click)="setActiveCoffee(coffee, i)" >{{coffee.blend_name}}</td>
+          </tr>
+        
+          
+        </tbody>
+      </table>
+      
     </div>
     <div class="col-md-4">
         <app-product-details

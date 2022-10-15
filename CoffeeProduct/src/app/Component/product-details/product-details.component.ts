@@ -13,11 +13,11 @@ export class ProductDetailsComponent implements OnInit {
   @Input() viewMode = false;
   @Input() currentCoffee : Coffee | any;
 
-
   constructor() { }
 
   ngOnInit(): void {
     
   }
+  
 
 }

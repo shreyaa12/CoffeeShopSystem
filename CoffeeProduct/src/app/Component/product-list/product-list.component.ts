@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit,ViewChild } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AppStateFacadeService } from 'src/app/app-state-facade.service';
 import { Coffee } from 'src/app/Model/coffee.model';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 
 //imports before @NgRx Selectors
 // import { Store } from '@ngrx/store';
@@ -27,6 +28,9 @@ export class ProductListComponent implements OnInit,OnDestroy {
       count = 10;
       pageSize = 5;
       coffeeSubscribe :Subscription | undefined;
+      // @ViewChild(ProductDetailsComponent) viewMode!: boolean;
+     viewChildComponent =false;
+
      
   constructor(public appStateService :AppStateFacadeService ) { }
   
@@ -43,8 +47,8 @@ export class ProductListComponent implements OnInit,OnDestroy {
     })
     
     this.appStateService.fetchCoffees();
+    
   }
-
 
   // before introducing the ngRx Store. The base assignment done with the following HTTP request
         // retrieveCoffeeList(): void {
@@ -61,10 +65,20 @@ export class ProductListComponent implements OnInit,OnDestroy {
   setActiveCoffee(c: Coffee, index: number): void {
     this.currentCoffee = c;
     this.currentIndex = index;
-    console.log("current Coffee on click of every data",this.currentCoffee);
+    this.viewChildComponent = true;
+    console.log("current Coffee on click of every data",this.viewChildComponent);
   }
 
-  ngOnDestroy(): void {
+  handlePageChange(event:number){
+    this.page = event;
+   
+    this.viewChildComponent = ! this.viewChildComponent;
+    console.log("THIS.VIEWmODE",this.viewChildComponent);
+   
+    }
+
+    
+    ngOnDestroy(): void {
     if(this.coffeeSubscribe){
       this.coffeeSubscribe.unsubscribe;
     }
@@ -73,5 +87,4 @@ export class ProductListComponent implements OnInit,OnDestroy {
 
 
 }
-
 

@@ -14,3 +14,10 @@
   h4{
     margin-bottom: 2rem;
   }
+  .highlight{
+    background-color:#f8f9fa;
+  }
+  .ngx-pagination.responsive ul{
+    
+    padding-inline-start: 0px !important;
+  }

@@ -3,14 +3,14 @@
   <head><title>Coffees List Page</title></head>
 <body>
   <div class="list row">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <h4>Coffee Blends</h4>
-      <table class="table table-hover">
+      <table class="table">
         <thead></thead>
         <tbody>
           <ng-container *ngFor="let coffee of coffees | paginate : {itemsPerPage: count,currentPage: page} let i = index">
-            <tr  (click)="viewChildComponent = true" [class.active]="i == currentIndex">
-              <td (click)="setActiveCoffee(coffee, i)" ><span class="">{{coffee.blend_name}}</span></td>
+            <tr id="clist"  [class.active]="i == currentIndex"  >
+              <td [ngClass]="{highlight: viewChildComponent && coffee.id === currentCoffee.id}"(click)="setActiveCoffee(coffee, i)" ><span class="">{{coffee.blend_name}}</span></td>
             </tr>
               <ng-container *ngIf="viewChildComponent && coffee.id === currentCoffee.id">
                 <tr>
@@ -29,14 +29,15 @@
       </table>
     </div>
   </div>
-  <div class="list row">
-    <div class="col-md-8">
-      <pagination-controls
+  <div align="center">
+    <pagination-controls
       previousLabel="Prev"
       nextLabel="Next"
       [responsive]="true"
-      (pageChange)="handlePageChange($event)"></pagination-controls>
-  </div>
+      (pageChange)="handlePageChange($event)">
+    </pagination-controls>
+
   </div>
 </body>
 </html>
+

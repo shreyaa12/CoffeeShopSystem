@@ -65,23 +65,27 @@ export class ProductListComponent implements OnInit,OnDestroy {
   setActiveCoffee(c: Coffee, index: number): void {
     this.currentCoffee = c;
     this.currentIndex = index;
-    this.viewChildComponent = true;
-    console.log("current Coffee on click of every data",this.viewChildComponent);
+    this.viewChildComponent = !this.viewChildComponent;
+    console.log("setActiveCoffee",this.viewChildComponent);
   }
 
   handlePageChange(event:number){
     this.page = event;
     this.viewChildComponent = false;
-    console.log("THIS.VIEWmODE",this.viewChildComponent);
-   
-    }
+    console.log("THIS handlePageChange",this.viewChildComponent);
+  }
+  toggleCurrentRow():void{
+    console.log("THIS toggleCurrentRow",this.viewChildComponent);
+    
+    this.viewChildComponent = !this.viewChildComponent
+  }
 
     
-    ngOnDestroy(): void {
-    if(this.coffeeSubscribe){
-      this.coffeeSubscribe.unsubscribe;
-    }
-    
+  ngOnDestroy(): void {
+  if(this.coffeeSubscribe){
+    this.coffeeSubscribe.unsubscribe;
+  }
+  
   }
 
 

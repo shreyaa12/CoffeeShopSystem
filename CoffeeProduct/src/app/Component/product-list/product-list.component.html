@@ -1,35 +1,42 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head><title>Coffees List Page</title></head>
 <body>
   <div class="list row">
     <div class="col-md-8">
-      <h4>Coffee List</h4>
+      <h4>Coffee Blends</h4>
       <table class="table table-hover">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Blend Name</th>
-          </tr>
-        </thead>
+        <thead></thead>
         <tbody>
-          <tr *ngFor="let coffee of coffees | paginate : {itemsPerPage: count,currentPage: page} let i = index"  [class.active]="i == currentIndex">
-          <td (click)="setActiveCoffee(coffee, i)" >{{coffee.blend_name}}</td>
-          </tr>
+          <ng-container *ngFor="let coffee of coffees | paginate : {itemsPerPage: count,currentPage: page} let i = index">
+            <tr  (click)="viewChildComponent = true" [class.active]="i == currentIndex">
+              <td (click)="setActiveCoffee(coffee, i)" ><span class="">{{coffee.blend_name}}</span></td>
+            </tr>
+              <ng-container *ngIf="viewChildComponent && coffee.id === currentCoffee.id">
+                <tr>
+                  <td>
+                    <!-- Product Detail Component -->
+                    <app-product-details
+                    [viewMode]="viewChildComponent"
+                    [currentCoffee]="currentCoffee">
+                  </app-product-details>
+                  <!-- Product Detail Component -->
+                </td>
+                </tr>
+              </ng-container>
+          </ng-container>
         </tbody>
       </table>
     </div>
-    <div class="col-md-8" *ngIf="viewChildComponent">
-        <app-product-details
-          [viewMode]="true"
-          [currentCoffee]="currentCoffee">
-        </app-product-details>
-    </div>
-    
-    <div class="col-md-7">
-        <pagination-controls
-        previousLabel="Prev"
-        nextLabel="Next"
-        [responsive]="true"
-        (pageChange)="handlePageChange($event)"></pagination-controls>
-    </div>
+  </div>
+  <div class="list row">
+    <div class="col-md-8">
+      <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      [responsive]="true"
+      (pageChange)="handlePageChange($event)"></pagination-controls>
+  </div>
   </div>
 </body>
 </html>

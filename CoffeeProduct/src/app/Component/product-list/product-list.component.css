@@ -8,3 +8,9 @@
     text-align: left;
     font-weight: bold;
   }
+  .bold_title{
+    font-weight: bold;
+  }
+  h4{
+    margin-bottom: 2rem;
+  }

@@ -1,30 +1,38 @@
-<div *ngIf="viewMode">
-    <div *ngIf="currentCoffee.id">
-      <h4>Coffee  {{ currentCoffee.blend_name}}</h4>
-      <div>
-        <label><strong>Id :</strong></label> 
-        {{ currentCoffee.id }}
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head><title>Coffee Detail Component</title></head>
+<body>
+  <table class="table" *ngIf="viewMode">
+    <thead>
+    </thead>
+    <tbody *ngIf="currentCoffee.id">
+        <tr>
+          <td class="td_right"><i>Id: </i></td>
+          <td class="td_left"><span>{{ currentCoffee.id }}</span>  </td>
+        </tr>
+  
+        <tr>
+          <td class="td_right"><i>Origin: </i></td>
+          <td class="td_left"><span> {{ currentCoffee.origin }} </span></td>
+        </tr>
 
-      <div>
-        <label><strong>Origin:</strong></label>
-        {{ currentCoffee.origin }} 
-      </div>
-      <div>
-        <label><strong>Variety:</strong></label>
-        {{ currentCoffee.variety }} 
-      </div>
-      <div>
-        <label><strong>Notes:</strong></label>
-        {{ currentCoffee.notes }} 
-      </div>
-      <div>
-        <label><strong>Intensifier:</strong></label>
-        {{ currentCoffee.intensifier }} 
-      </div>
-  
-   
-    </div>
-  
-   
-  </div>
+        <tr>
+          <td class="td_right"><i>Variety: </i></td>
+          <td class="td_left"><span>{{ currentCoffee.variety }}</span></td>
+        </tr>
+
+        <tr>
+          <td class="td_right"><i>Notes: </i></td>
+          <td class="td_left"><span>{{ currentCoffee.notes }}</span></td>
+        </tr>
+        <tr>
+          <td class="td_right"><i>Intensifier: </i></td>
+          <td class="td_left"><span>{{ currentCoffee.intensifier }} </span>
+          </td>
+        </tr>
+    </tbody>
+    
+     
+    </table>
+</body>
+</html>

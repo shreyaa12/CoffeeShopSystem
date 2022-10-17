@@ -6,3 +6,16 @@
 h4{
     margin-top: 3rem;
 }
+
+.td_right{
+  border-top:none;
+  width: 50%;
+  text-align: right;
+  padding-bottom: 0rem;
+}
+.td_left{
+  border-top:none;
+  width: 50%;
+  text-align: left;
+  padding-bottom: 0rem
+}

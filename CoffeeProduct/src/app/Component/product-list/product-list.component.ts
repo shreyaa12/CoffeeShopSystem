@@ -71,8 +71,7 @@ export class ProductListComponent implements OnInit,OnDestroy {
 
   handlePageChange(event:number){
     this.page = event;
-   
-    this.viewChildComponent = ! this.viewChildComponent;
+    this.viewChildComponent = false;
     console.log("THIS.VIEWmODE",this.viewChildComponent);
    
     }

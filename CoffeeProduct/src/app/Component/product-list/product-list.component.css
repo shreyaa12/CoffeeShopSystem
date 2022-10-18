@@ -13,11 +13,19 @@
   }
   h4{
     margin-bottom: 2rem;
+    margin-top: 2rem;
   }
   .highlight{
     background-color:#f8f9fa;
   }
-  .ngx-pagination.responsive ul{
-    
+  /* .ngx-pagination.responsive ul{
     padding-inline-start: 0px !important;
+  } */
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ngx-pagination {
+    padding-left: 0;
   }

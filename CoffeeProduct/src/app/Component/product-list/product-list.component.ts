@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit,ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit,ViewEncapsulation } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AppStateFacadeService } from 'src/app/app-state-facade.service';
 import { Coffee } from 'src/app/Model/coffee.model';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
 
 //imports before @NgRx Selectors
 // import { Store } from '@ngrx/store';
@@ -15,21 +14,22 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductListComponent implements OnInit,OnDestroy {
 
       coffees: Coffee[] = [];
       coffees$ : Observable<Coffee[]> | undefined;
       currentCoffee: Coffee = {};
+      prevIndex = -1;
       currentIndex = -1;
       blend_name = '';
       page = 1;
       count = 10;
       pageSize = 5;
       coffeeSubscribe :Subscription | undefined;
-      // @ViewChild(ProductDetailsComponent) viewMode!: boolean;
-     viewChildComponent =false;
+      viewChildComponent =false;
 
      
   constructor(public appStateService :AppStateFacadeService ) { }
@@ -61,24 +61,27 @@ export class ProductListComponent implements OnInit,OnDestroy {
         //     error:(e) => console.error(e)
         //   });
         // }
-
   setActiveCoffee(c: Coffee, index: number): void {
     this.currentCoffee = c;
-    this.currentIndex = index;
-    this.viewChildComponent = !this.viewChildComponent;
-    console.log("setActiveCoffee",this.viewChildComponent);
+    if(this.currentIndex === -1){ this.currentIndex = index; }
+    else if(this.currentIndex !==-1){this.prevIndex = this.currentIndex; this.currentIndex = index}; 
+  }
+
+  toggleRow():void{
+    if(this.currentIndex !== this.prevIndex){
+     this.viewChildComponent = true; 
+    }else{
+      if(this.currentIndex === this.prevIndex &&  !this.viewChildComponent){ this.viewChildComponent = true;}
+      else {this.viewChildComponent = false;}
+    }
   }
 
   handlePageChange(event:number){
     this.page = event;
     this.viewChildComponent = false;
-    console.log("THIS handlePageChange",this.viewChildComponent);
   }
-  toggleCurrentRow():void{
-    console.log("THIS toggleCurrentRow",this.viewChildComponent);
-    
-    this.viewChildComponent = !this.viewChildComponent
-  }
+
+  
 
     
   ngOnDestroy(): void {

@@ -8,11 +8,12 @@
       <table class="table">
         <thead></thead>
         <tbody>
-          <ng-container *ngFor="let coffee of coffees | paginate : {itemsPerPage: count,currentPage: page} let i = index">
+          <ng-container *ngFor="let coffee of coffees | paginate : {itemsPerPage: count,currentPage: page} let i = index" >
             <tr id="clist"  [class.active]="i == currentIndex"  >
-              <td [ngClass]="{highlight: viewChildComponent && coffee.id === currentCoffee.id}"(click)="setActiveCoffee(coffee, i)" ><span class="">{{coffee.blend_name}}</span></td>
+              <td [ngClass]="{highlight: viewChildComponent && coffee.id === currentCoffee.id}"(click)="setActiveCoffee(coffee, i);toggleRow()" ><span>{{coffee.blend_name}}</span></td>
             </tr>
-              <ng-container *ngIf="viewChildComponent && coffee.id === currentCoffee.id">
+          
+              <ng-container *ngIf="viewChildComponent && coffee.id===currentCoffee.id">
                 <tr>
                   <td>
                     <!-- Product Detail Component -->
@@ -25,11 +26,12 @@
                 </tr>
               </ng-container>
           </ng-container>
+          
         </tbody>
       </table>
     </div>
   </div>
-  <div align="center">
+  <div class="pagination">
     <pagination-controls
       previousLabel="Prev"
       nextLabel="Next"

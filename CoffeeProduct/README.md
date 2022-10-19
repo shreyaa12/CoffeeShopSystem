@@ -25,3 +25,22 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Necessary installation
+
+Bootstrap UI framework
+npm install bootstrap@4.6.1
+
+Pagination
+npm install ngx-pagination --save
+
+For NgRx Store
+ng add @ngrx/store
+ng add @ngrx/store-devtools
+Add Redux extension in chrome
+ng generate @ngrx/schematics:store pathformodule --module modulename
+npm install @ngrx/schematics
+
+NgRx effects
+ng add @ngrx/effects
+

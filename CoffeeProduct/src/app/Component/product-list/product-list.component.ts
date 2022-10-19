@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit,ViewEncapsulation } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit,Pipe,ViewEncapsulation } from '@angular/core';
+import { PaginatePipe } from 'ngx-pagination';
+import { Observable, pipe, Subscription } from 'rxjs';
 import { AppStateFacadeService } from 'src/app/app-state-facade.service';
 import { Coffee } from 'src/app/Model/coffee.model';
 
@@ -17,6 +18,8 @@ import { Coffee } from 'src/app/Model/coffee.model';
   styleUrls: ['./product-list.component.css'],
   encapsulation: ViewEncapsulation.None
 })
+
+
 export class ProductListComponent implements OnInit,OnDestroy {
 
       coffees: Coffee[] = [];
@@ -31,7 +34,7 @@ export class ProductListComponent implements OnInit,OnDestroy {
       coffeeSubscribe :Subscription | undefined;
       viewChildComponent =false;
 
-     
+  
   constructor(public appStateService :AppStateFacadeService ) { }
   
 
